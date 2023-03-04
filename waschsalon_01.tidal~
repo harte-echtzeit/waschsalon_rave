@@ -1,0 +1,19 @@
+-- some snippets for the rave in Zwickaus Waschsalon ~> 2023-03-17
+
+-- beat
+d1 $ s "[bd*4, hh*8]"
+  -- $ s "[bd*4, sn*3, hh*8]"
+  # gain "1 1.1 [0.9|1] 0.7"
+  -- # speed 1
+
+-- bass
+
+d2 $ fast 1
+  $ n "1/2 5 1 3*2"
+  # s "bass2"
+  # gain 0.8
+  # legato 1
+  # crush 4
+
+-- synth
+d3 
