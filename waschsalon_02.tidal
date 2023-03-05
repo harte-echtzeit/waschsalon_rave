@@ -1,0 +1,90 @@
+-- second prep for waschsalon rave in zwiickau ~> 2023-03-17
+
+-- complex beat
+d2 $ layer [-- jux rev,
+  -- ghost,
+  sometimes (fast 2),
+  -- rot 4,
+  echo 4 0.2 0.8,
+  -- off 1.25 (|+ "7"),
+  (# fshift "-10 0 10 -5"),
+  scramble 4
+  -- pan (range 0 1 $ sine)
+  ] 
+  $ s "[bd*4, [bd, cp] ~ ~ ~]"
+  # krush 3
+  -- # crush 2
+  # speed "0.7 0.9 1.3 1.5"
+  # vowel "[a|u]"
+  -- # comb rand
+  -- # smear 3
+  -- # hpf 1230
+  # gain 0.8
+
+-- some synths
+d3 $ slow 2
+  $ layer [jux rev,
+           rotL 3,
+           --scramble 4,
+           ghost, 
+           echo 4 0.1 0.9,
+           (# s "superhoover") . (# gain 0.65)]
+  $ off 1.125 (|- "7")
+  -- $ arp "[up down]"
+  $ n "a4'min e4'maj d'maj7 c'min"
+  # s "supermandolin"
+  -- # legato 4
+  # djf rand
+
+
+let b = "1 0 1 0 1 0 1"
+    b' = inv b
+
+-- hardtekk
+d1 $ fast 1.5
+  $ layer[
+         -- off 1.025 (|+ "7"),
+         scramble 7,
+         rot 5
+         ]
+  $ stack[
+  struct (b) $ s "clubkick",
+  struct (b') $ s "blip(3,8)"
+  # gain 1.2,
+  struct (b') $ n "a3'maj7(3,8) d3'maj" # s "superpiano"
+  # speed "0.4 2 1.3 0.2"
+  # gain 1
+  # vowel "a"
+  # lpf 600
+  # legato 0.7]
+
+-- slow beat and some synth
+d2 $ sometimes (# vowel "[a|u]")
+  $ layer[sometimes (jux rev . ghost),
+           echo 4 0.1 0.8,
+           iter 7
+         ]
+  $ stack[
+  struct b $ s "bd blip",
+  struct b' $ s "control" # room 0.1 # sz rand # speed "0.3 1.2 0.7" 
+          ]
+  # legato 0.7
+
+-- nice nearly endless structure of beat and synth line
+ let m = "t t f t"
+     m' = listToPat({t f t t})
+
+ d1 $ jux rev
+   $ degradeBy 0.25
+   $ layer [fast 0.5, echo 3 0.2 0.8, scramble (irand 4), (#room 0.1)]
+   $ struct ("{t t f t} . {t f [t|f] t}" ) $ s "[bd sn . clak cp]"
+   # vowel "[a, u, o?, i]"
+   # gain 0.7
+
+ d2 $ iter' 4
+   -- $ every 3 (rot 3)
+   $ ghost
+   $ struct("t t f t")
+   $ scramble 3 (n "a4'min b5'min c3'maj e4'min") # s "superpwm"
+   -- # fshift 0
+   -- # vowel "u?a" 
