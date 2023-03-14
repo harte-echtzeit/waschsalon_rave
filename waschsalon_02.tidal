@@ -54,19 +54,39 @@ d1 $ fast 1.5
   struct (b') $ n "a3'maj7(3,8) d3'maj" # s "superpiano"
   # speed "0.4 2 1.3 0.2"
   # gain 1
-  # vowel "a"
-  # lpf 600
+  # vowel "a i"
+  # lpf "600"
   # legato 0.7]
 
+d5 $ fast 2
+  $ sometimes (jux rev)
+  $ stack [
+  struct (b) $ s "bassdm*2 bass2 bass0",
+  struct (b') $ s "hh*2 [sn linnhats*3] ifdrums:4"
+  ]
+  # shape 0
+ 
+  # legato 1.4
+
+
+d6 $ jux rev
+  $ stack[
+  -- s "clubkick sn*2 linhats*2 sn",
+  n "1 .. 6" # s "space"
+  ]
+  -- # crush 2
+  -- # comb 0.4
+  # gain 0.0
+  
 -- slow beat and some synth
-d2 $ sometimes (# vowel "[a|u]")
+d2 $ sometimes (# vowel "[a|i]")
   $ layer[sometimes (jux rev . ghost),
            echo 4 0.1 0.8,
            iter 7
          ]
   $ stack[
-  struct b $ s "bd blip",
-  struct b' $ s "control" # room 0.1 # sz rand # speed "0.3 1.2 0.7" 
+  struct b $ s "bd blix",
+  struct b' $ s "control sitar" # room 0.1 # sz rand # speed "0.3 1.2 0.7" 
           ]
   # legato 0.7
 
