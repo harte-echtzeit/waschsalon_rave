@@ -95,16 +95,16 @@ d2 $ sometimes (# vowel "[a|i]")
      m' = listToPat({t f t t})
 
  d1 $ jux rev
-   $ degradeBy 0.25
+   $ degradeBy 0.1
    $ layer [fast 0.5, echo 3 0.2 0.8, scramble (irand 4), (#room 0.1)]
    $ struct ("{t t f t} . {t f [t|f] t}" ) $ s "[bd sn . clak cp]"
    # vowel "[a, u, o?, i]"
-   # gain 0.7
+   # gain 1.8
 
  d2 $ iter' 4
    -- $ every 3 (rot 3)
    $ ghost
    $ struct("t t f t")
-   $ scramble 3 (n "a4'min b5'min c3'maj e4'min") # s "superpwm"
+   $ scramble 4 (n "a4'min b5'min c3'maj e4'min") # s "superpwm"
    -- # fshift 0
-   -- # vowel "u?a" 
+   # vowel "u?a" 
